@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Parts of Speech Tagger</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="assets/css/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css">
+
+    <!-- Fonts -->
+    <link href="assets/css/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+
+    <!-- Retina Images Plugin -->
+    <script src="assets/js/plugins/retina/retina.min.js"></script>
+
+    <!-- Plugin CSS -->
+    <link href="assets/css/plugins/hover/hover.min.css" rel="stylesheet">
+    <link href="assets/css/plugins/owl.carousel/owl.carousel.css" rel="stylesheet">
+    <link href="assets/css/plugins/owl.carousel/owl.theme.css" rel="stylesheet">
+    <link href="assets/css/plugins/owl.carousel/owl.transitions.css" rel="stylesheet">
+    <link href="assets/css/plugins/jquery.fs.wallpaper/jquery.fs.wallpaper.css" rel="stylesheet">
+    <link href="assets/css/plugins/magnific-popup/magnific-popup.css" rel="stylesheet">
+
+    <!-- Spectrum CSS -->
+    <!-- Note: spectrum.css is the default blue theme. To use another theme, uncomment the one you want and delete the rest, including the default spectrum.css! -->
+    <!-- <link href="assets/css/spectrum.css" rel="stylesheet"> -->
+    <!-- <link href="assets/css/spectrum-aqua.css" rel="stylesheet"> -->
+    <!-- <link href="assets/css/spectrum-coffee.css" rel="stylesheet"> -->
+    <!-- <link href="assets/css/spectrum-coral.css" rel="stylesheet"> -->
+    <!-- <link href="assets/css/spectrum-lavender.css" rel="stylesheet"> -->
+    <!-- <link href="assets/css/spectrum-olive.css" rel="stylesheet"> -->
+    <!-- <link href="assets/css/spectrum-orange.css" rel="stylesheet"> -->
+    <!-- <link href="assets/css/spectrum-peach.css" rel="stylesheet"> -->
+    <!-- <link href="assets/css/spectrum-pink.css" rel="stylesheet"> -->
+    <!-- <link href="assets/css/spectrum-purple.css" rel="stylesheet"> -->
+    <!-- <link href="assets/css/spectrum-rust.css" rel="stylesheet"> -->
+    <!-- <link href="assets/css/spectrum-seafoam.css" rel="stylesheet"> -->
+    <!-- <link href="assets/css/spectrum-slate.css" rel="stylesheet"> -->
+    <!-- <link href="assets/css/spectrum-turquoise.css" rel="stylesheet"> -->
+    <!-- <link href="assets/css/spectrum-yellow.css" rel="stylesheet"> -->
+
+    <!-- DEMO CSS AND STYLE SWITCHER - DEMO PURPOSES ONLY! -->
+    <link id="changeable-colors" rel="stylesheet" href="assets/css/spectrum.css">
+    <link href="assets/demo/style-switcher.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="assets/js/html5shiv.js"></script>
+      <script src="assets/js/respond.min.js"></script>
+    <![endif]-->
+	<link rel="stylesheet" href="assets/css/simple-line-icons.css" type="text/css">
+<script type="text/javascript">
+
+function processresult()
+{
+	
+ var phrase1=document.getElementById( "phrase1" ).value;
+	
+ if(phrase1)
+ {
+  $.ajax({
+  type: 'post',
+  url: 'post.php',
+  data: {
+   phrase:phrase1,
+  },
+  success: function (response) {
+   $( '#phraseop' ).html(response);
+   //alert(response);
+   if(response=="OK")	
+   {
+    return true;	
+   }
+   else
+   {
+    return false;	
+   }
+  }
+  });
+ }
+ else
+ {
+	 //document.body.appendChild("phraseop"); 
+  $( '#phraseop' ).html("");
+  return false;
+ }
+}
+
+
+
+
+</script>
+<style>
+input[type=text] {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #fff;
+	 width: 100%;
+	 color: #fff;
+}
+input:focus{ outline: none;}
+button {
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;
+	color:#009933;
+}
+</style>
+</head>
+
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+
+    <div id="wrapper">
+
+        <nav class="navbar navbar-dark navbar-fixed-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header page-scroll">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
+                        <i class="fa fa-bars"></i>
+                    </button>
+                    <a class="navbar-brand" href="#page-top">
+                        <!--span class="logo">
+                            <img src="assets/img/logo.png" alt="">
+                        </span-->
+						Parts of Speech Tagger
+                    </a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
+                    <ul class="nav navbar-nav">
+                        <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+                        <li class="hidden">
+                            <a href="#page-top"></a>
+                        </li>
+                        <li class="page-scroll">
+                            <a href="#about">About</a>
+                        </li>
+                        <li class="page-scroll">
+                            <a href="#features">Features</a>
+                        </li>
+                        <li class="page-scroll">
+                            <a href="#work">Credits</a>
+                        </li>
+                        <li class="page-scroll">
+                            <a href="#download">Download</a>
+                        </li>
+						<li class="page-scroll">
+                            <a href="#footer-1">Contact</a>
+                        </li>
+                       
+                       
+                    </ul>
+                </div>
+                <!-- /.navbar-collapse -->
+            </div>
+            <!-- /.container -->
+        </nav>
+
+        <header class="intro-img intro-dark-bg" style="background-image: url(assets/img/demo-bgs/demo-bg-1.jpg)" data-stellar-background-ratio="0.5">
+            <div class="overlay"></div>
+            <div class="intro-body" data-scrollreveal="move 0 over 1.5s">
+                <div class="container">
+                    <form>
+
+
+
+
+<input  type="text"  style="font-size:25px; color=white"; id="phrase1" placeholder="Enter text..," autocomplete="off">
+
+
+<div class="intro-welcome">
+			<br>
+			
+			<button href="#portfolio-modal-2" class="portfolio-link" data-toggle="modal" onclick="processresult()";>
+			
+              <h6 class="brand-heading" align="center"><i class="icon-tag sm"></i></h6>
+			
+			</button>
+			
+			</div>
+			
+
+</form>
+ <br>
+                    
+                       
+                    
+
+                </div>
+            </div>
+        </header>
+
+        <section id="about" class="text-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
+                        <h2>About Parts of Speech Tagger</h2>
+                        <hr class="primary">
+                        <p>Part-of-speech tagging is the process of associating each word in a text with it’s part-of-speech category and possibly a set of morphosyntactic features.</p>
+                        <p>The basic idea is to apply a set of rules to an initial annotation achieved using a simple algorithm.</p>
+						<p>We also addresses the problem of tagging unknown words, i.e. words that don’t appear in the training corpus.</p>
+                       
+                    </div>
+                </div>
+            </div>
+        </section>
+
+      
+
+       
+
+        <section id="features" class="services-1">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2 text-center">
+                        <h2>Features</h2>
+                        <hr class="primary">
+                        <p>Eric Brill method is used.</p>
+						<p>An ‘error-driven’ approach for learning an ordered set of rules on Transformation-Based Learning by Christian Siefkes.</p>
+						<p>Hybrid model of both rule-based and ML techniques for accuracy POS tagging.</p>
+						<p>Open source build and redistribute under MIT License.</p>
+                    </div>
+                    
+                </div>
+            </div>
+        </section>
+
+       
+        </section>
+
+          <section id="work" class="about-3 bg-lighter text-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-7 col-md-6">
+                        <h2>Credits</h2>
+                        <hr class="primary">
+                        <p>Dr. Humera khanam is my guide for this project Your advice and experience has been tremendously helpful throughout the project work.</p>
+                        <p>Dr. Humera khanam Received “National award for teaching Excellence”. The award was presented in the Computer Science and Engineering category at the Indo-American Education Summit and Expo 2013.On February 3, 2013 at marigold by green park, Hyderabad, India.</p>
+						<p>International Conference on “Part-of-speech Tagging of Urdu using Hidden Markov Model, Maximum Entropy Model and Conditional Random Fields in Limited Resources Scenario” Proceedings of International Conference on Artificial Intelligence, Robotics and Embedded Systems AIRES 2015, 15-17 Oct 2015.</p>
+					</div>
+                    <div class="col-lg-3 col-lg-offset-1 col-md-6">
+                        <h2>Guide</h2>
+                        <hr class="primary">
+                        <div id="about-3-carousel" class="text-center">
+                            <div class="item about-img-1">
+                                <div class="info">
+                                    <!-- Mobile Fallback Image -->
+                                    <img class="img-responsive img-circle visible-xs" src="assets/img/demo-portraits/portrait-1.jpg" alt="">
+                                    <!-- Name / Position / Social Links -->
+                                    <h3>Dr. Humera khanam</h3>
+                                    <p>Professor &amp; Head of the Department, CSE</p>
+                                    <ul class="list-inline">
+                                        <li><a class="light-text" href="mailto:humera_svec@yahoo.co.in"><i class="fa fa-envelope fa-fw"></i></a>
+                                        </li>
+                                        <li><a class="light-text" href="https://www.svuniversity.edu.in/fp/78f7d450-5a97-4676-8c98-6b5d6f3166c2"><i class="fa fa-user fa-fw"></i></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                     
+                
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+     
+
+        <section id="download" class="blog-1 bg-lighter">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <h2>Download</h2>
+                        <hr class="primary mb">
+                    </div>
+                </div>
+                <div class="row blog-row">
+                    <div class="col-md-4 blog-col" data-scrollreveal="enter left over 1.5s">
+                        <a href="#" class="blog-preview-img">
+                            <div class="caption">
+                                <div class="caption-content">
+                                    <i class="fa fa-code fa-3x"></i>
+                                </div>
+                            </div>
+                            <img src="assets/img/demo-blog/1.jpg" class="img-responsive" alt="">
+                        </a>
+                        <div class="blog-preview-content">
+                            <h3>
+                                <a href="#">Github</a>
+                            </h3>
+                            <p>Code written in php, html and javascript. Mysql is used for storing corpus.</p>
+                            <ul class="meta list-inline">
+                                <li>Last commit on October 1, 2017</li>
+                                
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-4 blog-col" data-scrollreveal="enter bottom over 1.5s">
+                        <a href="#" class="blog-preview-img">
+                            <div class="caption">
+                                <div class="caption-content">
+                                    <i class="fa fa-download fa-3x"></i>
+                                </div>
+                            </div>
+                            <img src="assets/img/demo-blog/2.jpg" class="img-responsive" alt="">
+                        </a>
+                        <div class="blog-preview-content">
+                            <h3>
+                                <a href="https://www.slideshare.net/sadakpramodh/parts-of-speech-tagger">Powerpoint Presentation</a>
+                            </h3>
+                            <p>Brief explination about project in simple slides.Posted in slideshare.net</p>
+                            
+                            <ul class="meta list-inline">
+                                <li>Uploded on October 1, 2017</li>
+                               
+                            </ul>
+                        </div>
+                    </div>
+					<div class="col-md-4 blog-col" data-scrollreveal="enter left over 1.5s">
+                        <a href="#" class="blog-preview-img">
+                            <div class="caption">
+                                <div class="caption-content">
+                                    <i class="fa fa-book fa-3x"></i>
+                                </div>
+                            </div>
+                            <img src="assets/img/demo-blog/3.png" class="img-responsive" alt="">
+                        </a>
+                        <div class="blog-preview-content">
+                            <h3>
+                                <a href="#">Documentation</a>
+                            </h3>
+                            <p>Documentation will updated soon.</p>
+                        </div>
+                    </div>
+                  
+                </div>
+            </div>
+        </section>
+        <footer class="footer-1" id="footer-1">
+            <div class="upper">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <h2 class="script">sadak pramodh</h2>
+                            <address>
+                                
+                                <br>5-102, Kothapalli
+                                <br>Tirupati, Andhra Pradesh
+								<br>India 517501
+                                <br>
+                                <abbr title="Phone">P:</abbr> +91 - 9296656962<br>
+								<abbr title="Email">E:</abbr> sadakpramodh@live.com
+                            </address>
+                        </div>
+                        <div class="col-md-6">
+                            <h4>References</h4>
+                            <ul class="list-unstyled footer-links">
+                                <li>
+                                    <a>Transformation-Based Learning by Christian Siefkes.</a>
+                                </li>
+                                <li>
+                                    <a>Part-of-Speech Tagging Using the Brill Method Maria Larsson and M˚ans Norelius.</a>
+</a>
+                                </li>
+                                <li>
+                                    <a>B. Revathi, Dr. M. Humera Khanam “Hindi To English Part Of Speech Tagger By Using CRF Method.</a>
+                                </li>
+								<li>
+                                    <a>Eric Brill. 1995. Transformation-Based ErrorDriven Learning and Natural Language Processing: A Case Study in Part-of-Speech Tagging.</a>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div class="col-md-3">
+                            <h4>Social</h4>
+                            <ul class="list-inline">
+                                <li>
+                                    <a href="https://www.facebook.com/sadakpramodhIndia" class="btn btn-social-light btn-facebook"><i class="fa fa-fw fa-facebook"></i></a>
+                                </li>
+                                <li>
+                                    <a href="https://wwww.twitter.com/sadakpramodh" class="btn btn-social-light btn-twitter"><i class="fa fa-fw fa-twitter"></i></a>
+                                </li>
+                                <li>
+                                    <a href="https://plus.google.com/+SadakPramodh" class="btn btn-social-light btn-google-plus"><i class="fa fa-fw fa-google-plus"></i></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="lower">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <span class="small">Copyright &copy; 2017 - sadakpramodh.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <!-- Style Switcher - FOR DEMO PURPOSES ONLY -->
+        <!--div id="style-switcher" class="close-style-switcher">
+            <!--Panel Button -->
+            <!--a class="panel-button"><i class="fa fa-gear"></i></a-->
+            <!-- Colors -->
+            <!--div class="segment">
+                <h4>Theme Colors</h4>
+                <a title="spectrum-rust" class="switcher rust-bg"></a>
+                <a title="spectrum-coral" class="switcher coral-bg"></a>
+                <a title="spectrum-peach" class="switcher peach-bg"></a>
+                <a title="spectrum-orange" class="switcher orange-bg"></a>
+                <a title="spectrum-yellow" class="switcher yellow-bg"></a>
+                <a title="spectrum-coffee" class="switcher coffee-bg"></a>
+                <a title="spectrum-olive" class="switcher olive-bg"></a>
+                <a title="spectrum-seafoam" class="switcher seafoam-bg"></a>
+                <a title="spectrum-turquoise" class="switcher turquoise-bg"></a>
+                <a title="spectrum-slate" class="switcher slate-bg"></a>
+                <a title="spectrum-aqua" class="switcher aqua-bg"></a>
+                <a title="spectrum" class="switcher blue-bg"></a>
+                <a title="spectrum-lavender" class="switcher lavender-bg"></a>
+                <a title="spectrum-purple" class="switcher purple-bg"></a>
+                <a title="spectrum-pink" class="switcher pink-bg"></a>
+            </div-->
+            <!--div class="segment">
+                <h4>Section Options</h4>
+                <ul class="list-unstyled small">
+                    <li><a href="sections/sections-about.html">About Sections</a>
+                    </li>
+                    <li><a href="sections/sections-portfolio.html">Portfolio Sections</a>
+                    </li>
+                    <li><a href="sections/sections-services.html">Services Sections</a>
+                    </li>
+                    <li><a href="sections/sections-blog.html">Blog Sections</a>
+                    </li>
+                    <li><a href="sections/sections-pricing.html">Pricing Sections</a>
+                    </li>
+                    <li><a href="sections/sections-contact.html">Contact Sections</a>
+                    </li>
+                    <li><a href="sections/sections-other.html">Other Sections</a>
+                    </li>
+                    <li><a href="sections/footers.html">Footers</a>
+                    </li>
+                </ul>
+                <a href="docs/index.html" class="btn btn-xs btn-primary">Docs Preview</a>
+            </div>
+        </div-->
+        <!-- End Style Switcher -->
+
+    </div>
+
+  
+
+    <!-- Standard Portfolio Modal - Video and Text -->
+    <div id="portfolio-modal-2" class="portfolio-modal modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row first">
+                    <div class="col-lg-12">
+                        <h2 class="page-header">Output</h2>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+					
+					
+					
+					
+			
+					
+					
+					
+					
+					
+					 <div class="text-primary" id="phraseop"></div>
+                       </div>
+                    
+                </div>
+             
+            </div>
+        </div>
+    </div>
+
+    <!-- Core JavaScript Files -->
+    <script src="assets/js/jquery-1.10.2.js"></script>
+    <script src="assets/js/bootstrap/bootstrap.min.js"></script>
+    <script src="assets/js/modernizr.custom.js"></script>
+
+    <!-- Plugin JavaScript Files -->
+    <script src="assets/js/plugins/jquery.easing/jquery.easing.1.3.js"></script>
+    <script src="assets/js/plugins/jquery.fitvids/jquery.fitvids.js"></script>
+    <script src="assets/js/plugins/jquery.fs.wallpaper/jquery.fs.wallpaper.min.js"></script>
+    <script src="assets/js/plugins/jquery.magnific-popup/jquery.magnific-popup.min.js"></script>
+    <script src="assets/js/plugins/jquery.tubular/jquery.tubular.1.0.js"></script>
+    <script src="assets/js/plugins/owl.carousel/owl.carousel.min.js"></script>
+    <script src="assets/js/plugins/scrollReveal/scrollReveal.js"></script>
+    <script src="assets/js/plugins/stellar/stellar.js"></script>
+    <script src="assets/js/plugins/SmoothScroll/SmoothScroll.js"></script>
+    <script src="assets/js/plugins/jqBootstrapValidation/jqBootstrapValidation.js"></script>
+    <script src="assets/js/contact_me.js"></script>
+    <script src="assets/js/plugins/isotope/isotope.pkgd.min.js"></script>
+
+    <!-- Spectrum JavaScript Files -->
+    <script src="assets/js/spectrum.nav.js"></script>
+    <script src="assets/js/spectrum.js"></script>
+
+    <!-- Style Switcher JavaScript - DEMO PURPOSES ONLY! -->
+    <script src="assets/demo/style.switcher.js"></script>
+
+</body>
+</html>

@@ -4,6 +4,13 @@ Only part I implemented is API support and advanced threshold value computation 
 
 This project will live on www.sadakpramodh.azurewebsites.net/posTagger
 
+You can use , rebuild and do more but if it is helpful please donate money it helps me to meet my needs and coding is a skill needs a lot of time.
+
+UPA : sadakpramodh@upi
+Paypal : sadakpramodh@live.com
+Aadhar : 5652 3088 8484
+
+
 This is a PHP + MySql Implementation of Eric Brill's Rule based part of speech tagger. This is a port of GPoSTTL from C to PHP, with certain modifications such as removal of unwanted lemmatizer. Distributed under the same license as GPoSTTL.
 
 

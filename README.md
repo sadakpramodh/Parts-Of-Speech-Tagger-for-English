@@ -13,7 +13,7 @@ UPA : sadakpramodh@upi  <br>
 Paypal : sadakpramodh@live.com   <br>
 Aadhar : 5652 3088 8484  <br>
   <br>
-<b>
+</b>
 
 This is a PHP + MySql Implementation of Eric Brill's Rule based part of speech tagger. This is a port of GPoSTTL from C to PHP, with certain modifications such as removal of unwanted lemmatizer. Distributed under the same license as GPoSTTL.
 

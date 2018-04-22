@@ -2,6 +2,7 @@
 
 Only part I implemented is API support and advanced threshold value computation and Azure cognizant services for better prediction and training.
 
+This project will live on www.sadakpramodh.azurewebsites.net/posTagger
 
 This is a PHP + MySql Implementation of Eric Brill's Rule based part of speech tagger. This is a port of GPoSTTL from C to PHP, with certain modifications such as removal of unwanted lemmatizer. Distributed under the same license as GPoSTTL.
 
